@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Chrome Toolbar Minimiser",
+  "version": "1.4.1",
+  "minimum_chrome_version": "105",
+  "description": "Give the current page more room and reveal Chrome's toolbar from the top edge.",
+  "permissions": ["storage", "system.display", "nativeMessaging"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Toggle Chrome Toolbar Minimiser"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y"
+      }
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "file:///*"],
+      "js": ["edge-hover.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
